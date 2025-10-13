@@ -1,6 +1,12 @@
-# state managnement templates repo for react projects
+# state managnement templates repo for large scale react projects
 
 ## Chaos
 
-- hard to read (biz logic loss)
+### Big Ball of Mud
+
+- hard to understand (biz logic loss)
 - hard to maintain (tech implementation mess)
+
+
+
+
