@@ -2,6 +2,8 @@
 
 import { useModelA } from "../../model/modelA";
 
+// * hooks
+
 export default function UiX() {
   const [count, setCount] = useModelA();
   return (
