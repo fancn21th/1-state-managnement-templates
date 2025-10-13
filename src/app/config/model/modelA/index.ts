@@ -1,8 +1,8 @@
 // * State Management
-//  * Types
+//  * Types 对应后端的业务模型数据结构
 //  * API
 //  * Utils
-//  * Hooks
+//  * Hooks 通过它和 UI 组件交互
 
 import { create } from "zustand";
 
@@ -14,7 +14,9 @@ interface CountActions {
 }
 
 interface CountState {
+  // 业务模型 组件的输入
   count: number;
+  // 用户交互 组件的输出
   actions: CountActions;
 }
 
