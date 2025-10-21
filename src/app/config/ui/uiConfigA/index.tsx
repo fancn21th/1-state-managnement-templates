@@ -3,8 +3,7 @@
 import { useConfigA } from "../../model/configA";
 
 // * hooks
-
-export default function UiX() {
+export default function UiConfigA() {
   const { clientConfigA, updateConfigA } = useConfigA();
 
   return (

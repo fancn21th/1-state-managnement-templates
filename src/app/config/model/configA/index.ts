@@ -1,12 +1,6 @@
-// * State Management
-//  * Client State vs Server State
-//    * Zustand vs React Query
-//  * API
-//  * Hooks 通过它和 UI 组件交互
-
 import { create } from "zustand";
 
-import type { ConfigA } from "../../types/configs";
+import type { ConfigA, Config } from "../../types/configs";
 import { useConfig } from "../config";
 import { useEffect } from "react";
 
@@ -26,11 +20,22 @@ const configAStore = create<ConfigAStore>()((set) => ({
   },
 }));
 
+// helper function to update whole config when configA changes
+const updateWholeConfigWithConfigA = (
+  configA: ConfigA,
+  updateWholeConfig: (config: Config) => void,
+  currentConfig?: Config
+) => {
+  // TODO: improve update with immer
+  const newConfig = { ...currentConfig, a: configA } as Config;
+  updateWholeConfig(newConfig);
+};
+
 // hooks
 // this is for the UI components related to ConfigA only
 export function useConfigA() {
   // server state from api
-  const { serverConfig } = useConfig();
+  const { serverConfig, updateWholeConfig } = useConfig();
 
   // sync server state to client state
   useEffect(() => {
@@ -39,9 +44,17 @@ export function useConfigA() {
     }
   }, [serverConfig]);
 
+  // Enhanced updateConfigA that also updates the whole config
+  const handleUpdateConfigA = (newConfigA: ConfigA) => {
+    // Update local configA state
+    configAStore.getState().actions.updateConfigA(newConfigA);
+    // Update whole config
+    updateWholeConfigWithConfigA(newConfigA, updateWholeConfig, serverConfig);
+  };
+
   return {
     serverConfigA: serverConfig?.a,
     clientConfigA: configAStore((state) => state.configA),
-    updateConfigA: configAStore((state) => state.actions.updateConfigA),
+    updateConfigA: handleUpdateConfigA,
   };
 }
