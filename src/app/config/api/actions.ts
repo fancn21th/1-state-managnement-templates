@@ -32,7 +32,15 @@ export async function syncConfig(newConfig: Config) {
   await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate network delay
 
   // 更新内存中的配置
-  config = { ...newConfig };
+  config = {
+    a: {
+      model: {
+        ...newConfig.a.model,
+        displayName: newConfig.a.model.displayName + " (updated by server)",
+      },
+    },
+    b: { ...newConfig.b },
+  };
 
   console.log("✅ Config updated successfully:", config); // 调试日志
   console.log("📝 Config JSON:", JSON.stringify(config, null, 2)); // 格式化输出

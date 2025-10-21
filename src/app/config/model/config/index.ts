@@ -46,6 +46,8 @@ export function useConfig() {
   const { data } = useQuery({
     queryKey: ["config"],
     queryFn: get,
+    refetchInterval: 5000, // 每 5 秒轮询一次
+    refetchIntervalInBackground: true, // 后台也轮询
   });
 
   return {
