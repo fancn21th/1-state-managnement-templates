@@ -8,6 +8,7 @@ import { create } from "zustand";
 
 import type { ConfigA } from "../../types/configs";
 import { useConfig } from "../config";
+import { useEffect } from "react";
 
 // types
 type ConfigAStore = {
@@ -31,8 +32,16 @@ export function useConfigA() {
   // server state from api
   const { serverConfig } = useConfig();
 
+  // sync server state to client state
+  useEffect(() => {
+    if (serverConfig?.a) {
+      configAStore.getState().actions.updateConfigA(serverConfig.a);
+    }
+  }, [serverConfig]);
+
   return {
     serverConfigA: serverConfig?.a,
-    setConfigA: configAStore((state) => state.actions.updateConfigA),
+    clientConfigA: configAStore((state) => state.configA),
+    updateConfigA: configAStore((state) => state.actions.updateConfigA),
   };
 }
