@@ -4,6 +4,8 @@ import type { ConfigA, Config } from "../../types/configs";
 import { useConfig } from "../config";
 import { useEffect } from "react";
 
+//  model (zustand, react query) -  hook  - ui component (states, dispatch actions)
+
 // types
 type ConfigAStore = {
   configA: ConfigA;

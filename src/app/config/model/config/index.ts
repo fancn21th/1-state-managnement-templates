@@ -41,7 +41,7 @@ configStore.subscribe(
   }
 );
 
-// hooks
+// hooks <===> class (fields + methods)
 export function useConfig() {
   const { data } = useQuery({
     queryKey: ["config"],
