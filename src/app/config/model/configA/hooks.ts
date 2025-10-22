@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Config, ConfigA } from "../../types/configs";
 import { useConfig } from "../config/hooks";
 import { configAStore } from ".";
+import { Model } from "../../types/models";
 
 // helper function to update whole config when configA changes
 const updateWholeConfigWithConfigA = (
@@ -28,17 +29,11 @@ export function useConfigA() {
     }
   }, [serverConfig]);
 
-  // Enhanced updateConfigA that also updates the whole config
-  const handleUpdateConfigA = (newConfigA: ConfigA) => {
-    // Update local configA state
-    configAStore.getState().updateConfigA(newConfigA);
-    // Update whole config
-    updateWholeConfigWithConfigA(newConfigA, updateWholeConfig, serverConfig);
-  };
-
   return {
-    serverConfigA: serverConfig?.a,
-    clientConfigA: configAStore((state) => state.configA),
-    updateConfigA: handleUpdateConfigA,
+    model: configAStore((state) => state.configA.model),
+    updateModel: (model: Model) => {
+      configAStore.getState().updateModel(model);
+      updateWholeConfigWithConfigA({ model }, updateWholeConfig, serverConfig);
+    },
   };
 }
