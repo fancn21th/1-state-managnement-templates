@@ -89,3 +89,12 @@ npm run dev
 - Model Actions as Events
 - Using Multiple Stores
   [keep-the-scope-of-your-store-small](https://tkdodo.eu/blog/working-with-zustand#keep-the-scope-of-your-store-small)
+
+
+## Tips
+
+## Further Thoughts
+
+If the template is abstract enough, the AI tools can help to generate the boilerplate code for you based on the types and interfaces defined at the beginning.
+
+That is going to be a boost for developer productivity.
