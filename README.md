@@ -1,5 +1,21 @@
 # state managnement templates repo for large scale react projects
 
+## How to run
+
+### depdendencies
+
+[redux-devtools](https://github.com/reduxjs/redux-devtools)
+
+[tanstack-query-devtools](https://tanstack.com/query/latest/docs/framework/react/devtools)
+
+### start dev server
+
+```bash
+npm install
+npm run dev
+```
+
+
 ## Problem Statement
 
 ### Big Ball of Mud When Application Get Bigger and Bigger
