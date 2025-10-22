@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 import type { ConfigA } from "../../types/configs";
 import { devtools } from "zustand/middleware";
+import { Model } from "../../types/models";
 
 // client types
 
@@ -11,6 +12,7 @@ type ConfigAStoreState = {
 
 type ConfigAStoreActions = {
   updateConfigA: (config: ConfigA) => void;
+  updateModel: (model: Model) => void;
 };
 
 type ConfigAStore = ConfigAStoreState & ConfigAStoreActions;
@@ -20,7 +22,14 @@ export const configAStore = create<ConfigAStore>()(
   devtools(
     (set): ConfigAStore => ({
       configA: {} as ConfigA,
-      updateConfigA: (configA: ConfigA) => set(() => ({ configA })),
+      updateConfigA: (config: ConfigA) => set(() => ({ configA: config })),
+      updateModel: (model: Model) =>
+        set((state) => ({
+          configA: {
+            ...state.configA,
+            model,
+          },
+        })),
     }),
     {
       enabled: true,
