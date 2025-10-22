@@ -13,7 +13,7 @@ type ConfigBStoreState = {
 type ConfigBStoreActions = {
   updateConfigB: (config: ConfigB) => void;
   updateVariables: (variables: Record<string, string>) => void;
-  updateWorkflow: (workflows: Workflow) => void;
+  updateWorkflow: (workflow: Workflow) => void;
 };
 
 type ConfigBStore = ConfigBStoreState & ConfigBStoreActions;
@@ -31,11 +31,11 @@ export const configBStore = create<ConfigBStore>()(
             variables,
           },
         })),
-      updateWorkflow: (workflows: Workflow) =>
+      updateWorkflow: (workflow: Workflow) =>
         set((state) => ({
           configB: {
             ...state.configB,
-            workflows,
+            workflow,
           },
         })),
     }),

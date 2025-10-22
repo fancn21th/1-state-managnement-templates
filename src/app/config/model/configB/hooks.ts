@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useConfig } from "../config/hooks";
 import { configBStore } from ".";
 import { Config } from "../../types/configs";
+import { Workflow } from "../../types/workflows";
 
 // this is for the UI components related to ConfigB only
 export function useConfigB() {
@@ -60,6 +61,14 @@ export function useConfigB() {
       } as Config;
       updateWholeConfig(newConfig);
     },
-    updateWorkflow: configBStore((state) => state.updateWorkflow),
+    updateWorkflow: (workflow: Workflow) => {
+      configBStore.getState().updateWorkflow(workflow);
+      // update whole config
+      const newConfig = {
+        ...serverConfig,
+        b: { ...configBStore.getState().configB, workflow },
+      } as Config;
+      updateWholeConfig(newConfig);
+    },
   };
 }
