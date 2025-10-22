@@ -1,6 +1,6 @@
 "use client";
 
-import { useConfigA } from "../../model/configA";
+import { useConfigA } from "../../model/configA/hooks";
 
 // * hooks
 export default function UiConfigA() {

@@ -33,7 +33,7 @@
 
 ## Solution Overview
 
-### Tempaltes for State Management
+### Application Template for State Management
 
 - starts with types and interfaces
   > deeply understand how server state are designed
@@ -59,3 +59,4 @@
 - Separate Actions from State
 - Model Actions as Events
 - Using Multiple Stores
+  [keep-the-scope-of-your-store-small](https://tkdodo.eu/blog/working-with-zustand#keep-the-scope-of-your-store-small)
