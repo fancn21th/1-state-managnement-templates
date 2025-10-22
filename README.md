@@ -4,9 +4,10 @@
 
 ### depdendencies
 
-[redux-devtools](https://github.com/reduxjs/redux-devtools)
+you can install browser extensions as below for better debugging experience
 
-[tanstack-query-devtools](https://tanstack.com/query/latest/docs/framework/react/devtools)
+- [redux-devtools](https://github.com/reduxjs/redux-devtools)
+- [tanstack-query-devtools](https://tanstack.com/query/latest/docs/framework/react/devtools)
 
 ### start dev server
 
@@ -15,24 +16,26 @@ npm install
 npm run dev
 ```
 
-
-## Problem Statement
+## Problems
 
 ### Big Ball of Mud When Application Get Bigger and Bigger
 
-- hard to understand (biz logic loss)
+- hard to understand (biz logic scattered everywhere)
 - hard to maintain (tech implementation mess)
 
-### Why
+### Why it always happens
 
-- unit of application
+- the unit of application
 
-  > state and biz logics scattered across multiple components
-  > effect chains are complex and intertwined
-  > biz logic mixed with ui code
-  > hard to debug issues
+  we normally leverage the default mindset of react (component based thinking) to design the application, but when the application get bigger and bigger, this mindset will lead to "big ball of mud" anti-pattern.
+
+  > state / biz logics scattered across multiple components
+  > effect chains grows inevitably
+  > biz logic also mixed with ui code
+  > regret to become as a front-end developer
 
   ```tsx
+  // the unit example
   const ParitalComponent = () => {
     // states
     const [count, setCount] = useState(0)
@@ -51,22 +54,34 @@ npm run dev
 
 ### Application Template for State Management
 
+> universal state management application template for large scale react projects across multiple teams
+
+> hide different programming habits inside of each detailed step
+
 - starts with types and interfaces
   > deeply understand how server state are designed
+
+  good or bad, you can not deny the source of truth is from behind (API)
 
 - define stores (zustand, recoil, jotai, etc)
   > you can think of store design like OOAD (object oriented analysis and design)
 
+  but you can decide the real source of truth is reshaped in client side
+
 - ui components design
+
+  it is twisted with hooks design
 
 - hooks design
   > hooks are warpper of stores and biz logics and dedicated for ui components
 
   - one hook per component
 
+  - it is twisted with ui components design
+
 ## References
 
-#### Best Practices
+### Best Practices
 
 [5 Zustand BEST Practices in 5 Minutes](https://www.youtube.com/watch?v=6tEQ1nJZ51w)
 
