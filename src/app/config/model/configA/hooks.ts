@@ -1,21 +1,10 @@
 // hooks
 
 import { useEffect } from "react";
-import { Config, ConfigA } from "../../types/configs";
+import type { Config } from "../../types/configs";
 import { useConfig } from "../config/hooks";
 import { configAStore } from ".";
 import { Model } from "../../types/models";
-
-// helper function to update whole config when configA changes
-const updateWholeConfigWithConfigA = (
-  configA: ConfigA,
-  updateWholeConfig: (config: Config) => void,
-  currentConfig?: Config
-) => {
-  // TODO: improve update with immer
-  const newConfig = { ...currentConfig, a: configA } as Config;
-  updateWholeConfig(newConfig);
-};
 
 // this is for the UI components related to ConfigA only
 export function useConfigA() {
@@ -33,7 +22,9 @@ export function useConfigA() {
     model: configAStore((state) => state.configA.model),
     updateModel: (model: Model) => {
       configAStore.getState().updateModel(model);
-      updateWholeConfigWithConfigA({ model }, updateWholeConfig, serverConfig);
+      // update whole config
+      const newConfig = { ...serverConfig, a: { model } } as Config;
+      updateWholeConfig(newConfig);
     },
   };
 }
