@@ -1,10 +1,23 @@
 "use client";
 
-export default function UiConfigA() {
+import MultipleFields from "../../../../components/multipleFields";
+import KeyValues from "../../../../components/keyValues";
+import { useConfigB } from "../../model/configB/hooks";
+
+export default function UiConfigB() {
+  const { variables, workflow } = useConfigB();
+
   return (
-    <div className="border p-4">
-      Config A
-      <textarea className="w-full h-64 p-4 font-mono text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-vertical bg-gray-50"></textarea>
+    <div className="border p-4 mb-4 border-gray-300 rounded-lg">
+      <h2>Config B</h2>
+      variables:
+      <KeyValues keyValues={variables} />
+      <br />
+      workflow:
+      <MultipleFields
+        value={JSON.stringify(workflow, null, 2)}
+        onChange={() => {}}
+      />
     </div>
   );
 }
