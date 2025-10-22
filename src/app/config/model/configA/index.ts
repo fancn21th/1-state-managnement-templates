@@ -22,7 +22,7 @@ export const configAStore = create<ConfigAStore>()(
   devtools(
     (set): ConfigAStore => ({
       configA: {} as ConfigA,
-      updateConfigA: (configA: ConfigA) => set(() => ({ configA })),
+      updateConfigA: (config: ConfigA) => set(() => ({ configA: config })),
       updateModel: (model: Model) =>
         set((state) => ({
           configA: {
