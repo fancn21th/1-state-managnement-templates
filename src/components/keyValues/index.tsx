@@ -29,8 +29,9 @@ export default function KeyValues({
   return (
     <div>
       <Blower />
+      {/* TODO: is that right put initial value for to-add variable here ?? */}
       <button
-        onClick={() => onAdd("newKey", "newValue")}
+        onClick={() => onAdd("newKey" + new Date().getTime(), "newValue")}
         className="ml-2 px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded transition-colors"
       >
         Add Key-Value
