@@ -29,10 +29,10 @@ npm run dev
 
   we normally leverage the default mindset of react (component based thinking) to design the application, but when the application get bigger and bigger, this mindset will lead to "big ball of mud" anti-pattern.
 
-  > state / biz logics scattered across multiple components
-  > effect chains grows inevitably
-  > biz logic also mixed with ui code
-  > regret to become as a front-end developer
+  - state / biz logics scattered across multiple components
+  - effect chains grows inevitably
+  - biz logic also mixed with ui code
+  - regret to become as a front-end developer
 
   ```tsx
   // the unit example
@@ -54,9 +54,7 @@ npm run dev
 
 ### Application Template for State Management
 
-> universal state management application template for large scale react projects across multiple teams
-
-> hide different programming habits inside of each detailed step
+> so we want to have an universal state management application template for large scale react projects across multiple teams with hiding different programming habits deep inside of each detailed step
 
 - starts with types and interfaces
   > deeply understand how server state are designed
