@@ -52,9 +52,27 @@ npm run dev
 
 ## Solution Overview
 
-### Application Template for State Management
+> so we want to have an universal state management application template for large scale react projects across multiple teams with hiding different programming habits deep inside of each detailed step and share the common knowledge of biz logic and key implementation points at the high level.
 
-> so we want to have an universal state management application template for large scale react projects across multiple teams with hiding different programming habits deep inside of each detailed step
+### Solving the Problems
+
+- logic scattered across multiple components
+
+  > it is like you put everything into different drawers, you can not find anything easily.
+
+  to address this problem, it is better to have the biz logic centralized in one place (store) and ui components just focus on rendering the ui based on the state from the store.
+
+- how to represent complex logic
+
+  > if you just put everything into one big drawer, it is still hard to maintain. You have to organize everything in a better way.
+
+  when looking back we not only did not understand the biz logic but also the tech implementation mess, so we have to address both of them.
+
+  firstly the biz logic comes first, we use types and interfaces to represent the biz logic clearly. besides, the api design is also important, we define the api interfaces along by actions
+
+  secondly the tech implementation, we separate logic from ui components by using hooks as the bridge. each hook is dedicated for one component, so the ui component just focus on rendering the ui based on the state and actions from the hook.
+
+### Application Template for State Management
 
 - starts with types and interfaces
   > deeply understand how server state are designed
